@@ -4,3 +4,4 @@ report
 dist
 doc
 .svn
+npm-debug.log
