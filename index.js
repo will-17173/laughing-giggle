@@ -28,7 +28,7 @@ function getIndexOfPathByDeep(obj, dir, curDir, deep) {
     }
 }
 
-console.log(getIndexByPath('./../../services/photo/JianGuo'))
+console.log(getIndexByPath('./../../services/photo/JianGuo', 1))
 
 app.use('/public', express.static(__dirname + '../../services/photo'))
 
