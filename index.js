@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const fs = require('fs');
+const path = require('path')
+const photoDir = path.join(__dirname, '../../services/photo');
 
-var fs = require('fs');
-var path = __dirname + '../../services/photo';
+console.log(photoDir)
 
 fs.readdir(path,function(err,files){
   //获取目录所有图片，并生成文件
