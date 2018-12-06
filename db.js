@@ -19,7 +19,7 @@ function makeJSON(dir, i){
       fileList.push(path.basename(file))
     }
   })
-  fs.writeFileSync(`./db/${names[i]}.json`, JSON.stringify(fileList))
+  fs.writeFileSync(`../../services/photo/${names[i]}.json`, JSON.stringify(fileList))
 }
 
 dirs.forEach((dir, i) => {
