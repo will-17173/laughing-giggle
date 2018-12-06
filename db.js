@@ -3,12 +3,22 @@ const path = require('path')
 
 const dirs = [
   '../../services/photo/JianGuo/',
-  '../../services/photo/PRO7/'
+  '../../services/photo/PRO7/',
+  '../../services/photo/5c/',
+  '../../services/photo/6s/',
+  '../../services/photo/JianguoPro2/',
+  '../../services/photo/MI8/',
+  '../../services/photo/Note6/',
 ]
 
 const names = [
   'JianGuo',
-  'PRO7'
+  'PRO7',
+  '5c',
+  '6s',
+  'JianguoPro2',
+  'MI8',
+  'Note6',
 ]
 
 function makeJSON(dir, i){
