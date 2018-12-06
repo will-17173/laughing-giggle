@@ -44,7 +44,7 @@ var getFiles = {
 
 console.log(getFiles.getImageFiles(photoDir))
 
-app.use('/public', express.static(__dirname + '../../services/photo'))
+app.use(express.static('../../services/photo'))
 
 app.get('/', (req, res) => {
   res.send('hello world')
