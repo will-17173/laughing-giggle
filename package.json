@@ -7,9 +7,7 @@
     "type": "git",
     "url": "https://github.com/will-17173/laughing-giggle.git"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "author": "Will.H",
   "license": "MIT",
   "bugs": {
@@ -23,8 +21,8 @@
     "eslint": "eslint .",
     "jscs": "jscs ."
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
+    "express": "^4.16.4"
   }
 }
