@@ -7,7 +7,7 @@ const photoDir = path.join(__dirname, '../../services/photo');
 
 console.log(photoDir)
 
-fs.readdir(path,function(err,files){
+fs.readdir(photoDir, function(err,files){
   //获取目录所有图片，并生成文件
   // console.log(files);
   var msg = JSON.stringify(files);
