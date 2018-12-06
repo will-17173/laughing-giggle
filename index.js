@@ -4,7 +4,7 @@ const port = 3000
 const fs = require('fs')
 const path = require('path')
 // const photoDir = path.join(__dirname, '../../services/photo/JianGuo');
-const photoDir = '../../services/photo/JianGuo'
+const photoDir = '../../services/photo/JianGuo/'
 
 function readFileList (path, filesList) {
   var files = fs.readdirSync(path)
