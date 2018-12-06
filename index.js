@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 const fs = require('fs');
 const path = require('path')
-const photoDir = path.join(__dirname, '../../services/photo');
+const photoDir = path.join(__dirname, '../../services/photo/JianGuo');
 // const photoDir = __dirname;
 
 // 获取指定路径 path 下的，默认深度为 3 的目录 JSON
@@ -28,7 +28,7 @@ function getIndexOfPathByDeep(obj, dir, curDir, deep) {
     }
 }
 
-console.log(getIndexByPath('./../../services/photo'))
+console.log(getIndexByPath('./../../services/photo/JianGuo'))
 
 app.use('/public', express.static(__dirname + '../../services/photo'))
 
