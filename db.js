@@ -15,14 +15,11 @@ function makeJSON(dir, i){
   const files = fs.readdirSync(dir);
   var fileList = []
   files.forEach((file, j) => {
-    console.log(file)
-    console.log(path.basename(file))
-    console.log(path.extname(file))
-    // if(!fs.lstatSync(file).isDirectory() && path.extname(file).toLowerCase() === 'jpg'){
-    //   fileList.push(path.basename(file))
-    // }
+    if(path.extname(file).toLowerCase() === '.jpg'){
+      fileList.push(path.basename(file))
+    }
   })
-  // fs.writeFileSync(`./db/${names[i]}.json`, JSON.stringify(fileList))
+  fs.writeFileSync(`./db/${names[i]}.json`, JSON.stringify(fileList))
 }
 
 dirs.forEach((dir, i) => {
