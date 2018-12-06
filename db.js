@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 
 const dirs = [
-  '../../services/photo/JianGuo',
-  '../../services/photo/PRO7'
+  '../../services/photo/JianGuo/',
+  '../../services/photo/PRO7/'
 ]
 
 const names = [
