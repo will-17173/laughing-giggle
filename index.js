@@ -4,18 +4,31 @@ const port = 3000
 const fs = require('fs');
 const path = require('path')
 const photoDir = path.join(__dirname, '../../services/photo');
+// const photoDir = __dirname;
 
-console.log(photoDir)
+// 获取指定路径 path 下的，默认深度为 3 的目录 JSON
+function getIndexByPath(dir, deep = 3) {
+    let dirDevide = dir.split('/');
+    let preDir = dirDevide.splice(0, dirDevide.length - 1).join('/');
+    let index = {};
+    getIndexOfPathByDeep(index, path.join(__dirname, preDir), dirDevide[0], deep + 1);
+    return index;
+}
+// 开始对指定 path 递归查找深度为 deep 深度
+function getIndexOfPathByDeep(obj, dir, curDir, deep) {
+    let curPath = path.join(dir, curDir);
+    // 达到搜索深度，停止
+    if(deep) {
+        obj[curDir] = curDir;
+        if(fs.statSync(curPath).isDirectory()) {
+            obj[curDir] = {};
+            let lists = fs.readdirSync(curPath);
+            lists.forEach(list => getIndexOfPathByDeep(obj[curDir], curPath, list, deep - 1))
+        }
+    }
+}
 
-fs.readdir(photoDir, function(err,files){
-  //获取目录所有图片，并生成文件
-  // console.log(files);
-  var msg = JSON.stringify(files);
-  console.log(msg)
-  // fs.writeFile("img/图片名字.json", msg, function(){
-  //   console.log("添加日志成功");
-  // });
-})
+console.log(getIndexByPath('./'))
 
 app.use('/public', express.static(__dirname + '../../services/photo'))
 
