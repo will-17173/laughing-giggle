@@ -1,34 +1,47 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const fs = require('fs');
+const fs = require('fs')
 const path = require('path')
-const photoDir = path.join(__dirname, '../../services/photo/JianGuo');
-// const photoDir = __dirname;
+// const photoDir = path.join(__dirname, '../../services/photo/JianGuo');
+const photoDir = '../../services/photo/JianGuo'
 
-// 获取指定路径 path 下的，默认深度为 3 的目录 JSON
-function getIndexByPath(dir, deep = 3) {
-    let dirDevide = dir.split('/');
-    let preDir = dirDevide.splice(0, dirDevide.length - 1).join('/');
-    let index = {};
-    getIndexOfPathByDeep(index, path.join(__dirname, preDir), dirDevide[0], deep + 1);
-    return index;
-}
-// 开始对指定 path 递归查找深度为 deep 深度
-function getIndexOfPathByDeep(obj, dir, curDir, deep) {
-    let curPath = path.join(dir, curDir);
-    // 达到搜索深度，停止
-    if(deep) {
-        obj[curDir] = curDir;
-        if(fs.statSync(curPath).isDirectory()) {
-            obj[curDir] = {};
-            let lists = fs.readdirSync(curPath);
-            lists.forEach(list => getIndexOfPathByDeep(obj[curDir], curPath, list, deep - 1))
-        }
+function readFileList (path, filesList) {
+  var files = fs.readdirSync(path)
+  files.forEach(function (itm, index) {
+    var stat = fs.statSync(path + itm)
+    if (stat.isDirectory()) {
+      // 递归读取文件
+      readFileList(path + itm + '/', filesList)
+    } else {
+      var obj = {} // 定义一个对象存放文件的路径和名字
+      obj.path = path // 路径
+      obj.filename = itm // 名字
+      filesList.push(obj)
     }
+  })
+}
+var getFiles = {
+  // 获取文件夹下的所有文件
+  getFileList: function (path) {
+    var filesList = []
+    readFileList(path, filesList)
+    return filesList
+  },
+  // 获取文件夹下的所有图片
+  getImageFiles: function (path) {
+    var imageList = []
+
+    this.getFileList(path).forEach(item => {
+      var ms = image(fs.readFileSync(item.path + item.filename))
+
+      ms.mimeType && imageList.push(item.filename)
+    })
+    return imageList
+  }
 }
 
-console.log(getIndexByPath('./../../services/photo/JianGuo', 1))
+console.log(getFiles.getImageFiles(photoDir))
 
 app.use('/public', express.static(__dirname + '../../services/photo'))
 
