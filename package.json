@@ -24,6 +24,7 @@
   "devDependencies": {},
   "dependencies": {
     "express": "^4.16.4",
-    "handlebars": "^4.0.12"
+    "handlebars": "^4.0.12",
+    "imageinfo": "^1.0.4"
   }
 }

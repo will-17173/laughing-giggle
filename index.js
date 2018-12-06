@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const fs = require('fs')
 const path = require('path')
+const image = require("imageinfo");
 // const photoDir = path.join(__dirname, '../../services/photo/JianGuo');
 const photoDir = '../../services/photo/JianGuo/'
 
